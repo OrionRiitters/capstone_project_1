@@ -11,15 +11,11 @@ class Main:
     ruleManager = RuleManager()
     ui = UI()
 
-    def __init__(self):
-        print("See ya!")
-
     def initializeGame():
         return None
 
     def beginGame(self, board):
-        board.makeBoard()
-        print(board)
+        UI.renderBoard(board.makeBoardGraphic())
 
 
 main = Main()
