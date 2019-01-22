@@ -20,4 +20,3 @@ class Main:
 
 
 main = Main()
-

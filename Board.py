@@ -42,4 +42,3 @@ class Board:
             filler = ' [O] '
 
         self.boardGraphic[self.getRectX(rect)][self.getRectY(rect)] = filler
-
