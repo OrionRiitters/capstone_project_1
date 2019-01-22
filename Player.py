@@ -1,7 +1,9 @@
 class Player:
 
-    def __init__(self):
-        return None
+    type = ''
+
+    def __init__(self, type):
+        type = self.type
 
     def beginTurn():
         return None

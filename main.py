@@ -6,17 +6,18 @@ from UI import UI
 class Main:
 
     board = Board()
-    hmnPlayer = Player()
-    cmpPlayer = Player()
+    hmnPlayer = Player('Human')
+    cmpPlayer = Player('Computer')
     ruleManager = RuleManager()
     ui = UI()
 
     def initializeGame():
         return None
 
-    def beginGame(self, board):
-        UI.renderBoard(board.makeBoardGraphic())
+
+    board.fillCoordinate(55, hmnPlayer)
+    UI.renderBoard(board.boardGraphic)
 
 
 main = Main()
-main.beginGame(main.board)
+
