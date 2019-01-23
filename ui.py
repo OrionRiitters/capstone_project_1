@@ -5,8 +5,9 @@ class UI:
     def __init__(self):
         return None
 
+# Prints the board graphic to console
     def renderBoard(self, board):
-        print('\n')
+        print('\n'*40)
         for column in board:
             [print(row, end='') for row in column]
             print('\n')
@@ -29,14 +30,13 @@ class UI:
 
 
     def promptEndGame(self, player):
-        self.ui.renderBoard(self.board.boardGraphic)
         if player.type == 'Human':
             print('\nYou\'ve won! Just let that sink in for a moment. You did it. Wow!')
         else:
             print('\nYou managed to lose against a program with an arbitrary, random move set!')
-        return self.promptInput(1, '\nPlay again?\n1 - Yes\n0- No:\n')
+        exit()
 
-
+# Used in the other prompts
     def promptInput(self, optionsRange, prompt):
         userInput = None
 
@@ -50,9 +50,9 @@ class UI:
 
     def computerMoveDialogue(self):
         print('\nThe program is thinking..')
-        sleep(1.5)
+        sleep(.7)
         print('\nThe program is reaching for a piece..')
-        sleep(.5)
+        sleep(.9)
 
     def fullColumnPrompt(self):
         print('\nWhoops! That column seems to be full.')

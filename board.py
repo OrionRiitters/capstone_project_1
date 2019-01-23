@@ -23,11 +23,15 @@ class Board:
 
     boardGraphic = initializeBoardGraphic()
 
+
+# The two methods below take rects (two digit integers) and return the x and y values.
+# "getRectInt()" is useless but I might have used it somewhere and don't have thetime
+# to fix that.
     def getRectX(self, rect):
         rect = int(rect)
         x = (floor(rect/10) * 10)
         return x
-
+ 
     def getRectY(self, rect):
         rect = int(rect)
         y = rect - self.getRectX(rect)
@@ -36,7 +40,6 @@ class Board:
     def getRectInt(self, rect):
         return int(rect)
 
-
 # Takes a rect and a player, adds a rect to filledRects[], then adds a symbol
 # corresponding to the player to boardGraphic[]
     def fillCoordinate(self, rect, player):
@@ -44,16 +47,21 @@ class Board:
             filler = ' [X] '
         else:
             filler = ' [O] '
+
         self.boardGraphic[BOARD_SIZE-self.getRectY(self.getRectInt(rect))][int(self.getRectX(self.getRectInt(rect))/10)] = filler
         self.filledRects.append(rect)
         player.filledRects.append(rect)
 
+
+# Constructs a list from a column number, then returns true if that list has a length
+# of 7.
     def checkColumnFull(self, column):
         columnStack = []
 
-        for y in [self.getRectY(rect) for rect in self.filledRects]:
-            if y == column:
+        for x in [self.getRectX(rect) for rect in self.filledRects]:
+            if x == int(column)*10:
                 columnStack.append(None)
+        
 
         if len(columnStack) == 7:
             return True
@@ -61,6 +69,8 @@ class Board:
             return False
 
 
+# Creates a list from a column just like the method above, then sorts that list.
+# Returns the value of the rect in which a piece will "fall".
     def findColumnTopRect(self, column):
         rectStack = []
         column = column*10
@@ -69,10 +79,8 @@ class Board:
             if self.getRectX(rect) == column:
                 rectStack.append(rect)
         rectStack.sort()
-        print(rectStack)
 
         if not rectStack:
             return column
         else:
-            print(rectStack[len(rectStack)-1])
             return int(rectStack[len(rectStack)-1]) + 1

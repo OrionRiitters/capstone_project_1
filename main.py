@@ -4,6 +4,10 @@ from rule_manager import RuleManager
 from ui import UI
 from random import randint
 
+
+# This is my first attempt at an Object Oriented Python program so a lot of this is
+# probably done incorrectly. It works though!
+
 class Main:
 
     board = Board()
@@ -12,6 +16,7 @@ class Main:
     ruleManager = RuleManager()
     ui = UI()
 
+# Begin game
     def initializeGame(self):
 
         initInput = self.ui.promptBeginGame()
@@ -27,27 +32,15 @@ class Main:
             self.ui.renderBoard(self.board.boardGraphic)
             self.beginHmnTurn(self.hmnPlayer)
             self.ui.renderBoard(self.board.boardGraphic)
-    
 
 
+# Second half could be abstracted out but I am out of time.
     def beginHmnTurn(self, player):
         currentRect = -1
 
         while True:
             column = int(self.ui.promptUserMove())
-            if not self.board.checkColumnFull(column):
-                currentRect = self.board.findColumnTopRect(column)
-                self.board.fillCoordinate(currentRect, player)
 
-                break
-        if self.ruleManager.locatePossibleConnects(self.board, player, currentRect):
-            self.ui.promptEndGame(player)
-
-    def beginCmpTurn(self, player):
-        currentRect = -1
-
-        while True:
-            column = randint(0,0)
             if not self.board.checkColumnFull(column):
                 currentRect = self.board.findColumnTopRect(column)
                 self.board.fillCoordinate(currentRect, player)
@@ -56,15 +49,26 @@ class Main:
             else:
                 self.ui.fullColumnPrompt()
         if self.ruleManager.locatePossibleConnects(self.board, player, currentRect):
+            self.ui.renderBoard(self.board.boardGraphic)
             self.ui.promptEndGame(player)
+
+# Almost identical to beginHmnTurn save for the fourth line of code
+    def beginCmpTurn(self, player):
+        currentRect = -1
+
+        while True:
+            column = randint(0,1)
+
+            if not self.board.checkColumnFull(column):
+                currentRect = self.board.findColumnTopRect(column)
+                self.board.fillCoordinate(currentRect, player)
+
+                break
+    
+        if self.ruleManager.locatePossibleConnects(self.board, player, currentRect):
+            self.ui.renderBoard(self.board.boardGraphic)
+            self.ui.promptEndGame(player)
+
 
 main = Main()
 main.initializeGame()
-
-#main.board.fillCoordinate('00', main.cmpPlayer)
-#main.board.fillCoordinate('01', main.cmpPlayer)
-#main.board.fillCoordinate('02', main.cmpPlayer)
-#main.board.fillCoordinate('13', main.cmpPlayer)
-#main.ui.renderBoard(main.board.boardGraphic)
-#main.beginTurn(main.cmpPlayer)
-#main.ui.renderBoard(main.board.boardGraphic)
