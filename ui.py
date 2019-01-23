@@ -6,6 +6,7 @@ class UI:
         return None
 
     def renderBoard(self, board):
+        print('\n')
         for column in board:
             [print(row, end='') for row in column]
             print('\n')
@@ -19,7 +20,7 @@ class UI:
 
 
     def promptUserMove(self):
-        return self.promptInput(6, 'Please enter a number corresponding to the column in which you would like to drop a piece:\n')
+        return self.promptInput(6, '\nPlease enter a number corresponding to the column in which you would like to drop a piece:\n')
 
 
     def promptBeginGame(self):
@@ -27,8 +28,9 @@ class UI:
         return self.promptInput(1, '\nType \'1\' to play the first move, or \'0\' to let the computer go first:\n')
 
 
-    def promptEndGame(self, winBoolean):
-        if winBoolean:
+    def promptEndGame(self, player):
+        self.ui.renderBoard(self.board.boardGraphic)
+        if player.type == 'Human':
             print('\nYou\'ve won! Just let that sink in for a moment. You did it. Wow!')
         else:
             print('\nYou managed to lose against a program with an arbitrary, random move set!')
@@ -44,7 +46,7 @@ class UI:
             if userInput.isdigit() and int(userInput) in range(0, optionsRange+1):
                 break
 
-        return userInput
+        return int(userInput)
 
     def computerMoveDialogue(self):
         print('\nThe program is thinking..')

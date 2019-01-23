@@ -75,4 +75,4 @@ class Board:
             return column
         else:
             print(rectStack[len(rectStack)-1])
-            return rectStack[len(rectStack)-1] + 1
+            return int(rectStack[len(rectStack)-1]) + 1

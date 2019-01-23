@@ -12,9 +12,9 @@ class Test:
 
         def fillTestBoardOne():
             board.fillCoordinate('00', hmnPlayer)
-            board.fillCoordinate('33', hmnPlayer)
-            board.fillCoordinate('22', hmnPlayer)
-            board.fillCoordinate('11', hmnPlayer)
+            board.fillCoordinate('01', hmnPlayer)
+            board.fillCoordinate('02', hmnPlayer)
+            board.fillCoordinate('13', hmnPlayer)
             board.fillCoordinate('10', cmpPlayer)
             board.fillCoordinate('20', cmpPlayer)
             board.fillCoordinate('21', cmpPlayer)
