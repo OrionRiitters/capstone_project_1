@@ -29,4 +29,5 @@ def fillTestBoardTwo():
 
 fillTestBoardTwo()
 UI.renderBoard(board.boardGraphic)
-ruleManager.locatePossibleConnects(board, hmnPlayer, '66')
+ruleManager.locatePossibleConnects(board, cmpPlayer, '66')
+

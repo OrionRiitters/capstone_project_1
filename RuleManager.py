@@ -10,5 +10,4 @@ class RuleManager:
                 if x>=0 and y>=0 and x+y in [int(rect) for rect in player.filledRects]:
                     connectFourEdges.append(x+y)
 
-        print(connectFourEdges)
-        #print(board.filledRects)
+        print(player.filledRects)
