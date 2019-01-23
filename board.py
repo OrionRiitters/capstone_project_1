@@ -48,7 +48,7 @@ class Board:
         self.filledRects.append(rect)
         player.filledRects.append(rect)
 
-    def checkFullColumn(self, column):
+    def checkColumnFull(self, column):
         columnStack = []
 
         for y in [self.getRectY(rect) for rect in self.filledRects]:
@@ -56,6 +56,23 @@ class Board:
                 columnStack.append(None)
 
         if len(columnStack) == 7:
-            return False
-        else:
             return True
+        else:
+            return False
+
+
+    def findColumnTopRect(self, column):
+        rectStack = []
+        column = column*10
+    
+        for rect in self.filledRects:
+            if self.getRectX(rect) == column:
+                rectStack.append(rect)
+        rectStack.sort()
+        print(rectStack)
+
+        if not rectStack:
+            return column
+        else:
+            print(rectStack[len(rectStack)-1])
+            return rectStack[len(rectStack)-1] + 1

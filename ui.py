@@ -51,3 +51,6 @@ class UI:
         sleep(1.5)
         print('\nThe program is reaching for a piece..')
         sleep(.5)
+
+    def fullColumnPrompt(self):
+        print('\nWhoops! That column seems to be full.')

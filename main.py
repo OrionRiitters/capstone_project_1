@@ -15,9 +15,19 @@ class Main:
         return None
 
 
-    board.fillCoordinate(55, hmnPlayer)
+    board.fillCoordinate(50, hmnPlayer)
     ui.renderBoard(board.boardGraphic)
     ui.promptUserMove()
 
+    def beginTurn(self, player):
+        while True:
+            column = int(self.ui.promptUserMove())
+            if not self.board.checkColumnFull(column):
+                self.board.fillCoordinate(self.board.findColumnTopRect(column), player)
+                break
+
 
 main = Main()
+
+main.beginTurn(main.hmnPlayer)
+main.ui.renderBoard(main.board.boardGraphic)
