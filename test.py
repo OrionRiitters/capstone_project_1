@@ -1,7 +1,7 @@
-from Board import Board
-from Player import Player
-from RuleManager import RuleManager
-from UI import UI
+from board import Board
+from player import Player
+from rule_manager import RuleManager
+from ui import UI
 
 board = Board()
 hmnPlayer = Player('Human')
