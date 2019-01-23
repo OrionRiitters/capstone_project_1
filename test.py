@@ -30,6 +30,5 @@ def fillTestBoardTwo():
 def fillTestBoardThree():
     board.fillCoordinate('00', hmnPlayer)
 
-fillTestBoardTwo()
-UI.renderBoard(board.boardGraphic)
-print(ruleManager.locatePossibleConnects(board, cmpPlayer, '00'))
+fillTestBoardThree()
+print(board.checkFullColumn(4))

@@ -16,7 +16,8 @@ class Main:
 
 
     board.fillCoordinate(55, hmnPlayer)
-    UI.renderBoard(board.boardGraphic)
+    ui.renderBoard(board.boardGraphic)
+    ui.promptUserMove()
 
 
 main = Main()

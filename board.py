@@ -47,4 +47,15 @@ class Board:
         self.boardGraphic[BOARD_SIZE-self.getRectY(self.getRectInt(rect))][int(self.getRectX(self.getRectInt(rect))/10)] = filler
         self.filledRects.append(rect)
         player.filledRects.append(rect)
-    
+
+    def checkFullColumn(self, column):
+        columnStack = []
+
+        for y in [self.getRectY(rect) for rect in self.filledRects]:
+            if y == column:
+                columnStack.append(None)
+
+        if len(columnStack) == 7:
+            return False
+        else:
+            return True
