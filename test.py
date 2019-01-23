@@ -27,7 +27,9 @@ def fillTestBoardTwo():
         for y in range(0,7):
             board.fillCoordinate(str(x) + str(y), cmpPlayer)
 
+def fillTestBoardThree():
+    board.fillCoordinate('00', hmnPlayer)
+
 fillTestBoardTwo()
 UI.renderBoard(board.boardGraphic)
-ruleManager.locatePossibleConnects(board, cmpPlayer, '66')
-
+print(ruleManager.locatePossibleConnects(board, cmpPlayer, '00'))
