@@ -23,14 +23,19 @@ class Board:
 
     boardGraphic = initializeBoardGraphic()
 
+    def getRectX(self, rect):
+        rect = int(rect)
+        x = (floor(rect/10) * 10)
+        return x
 
     def getRectY(self, rect):
-        y = floor(rect * .1)
+        rect = int(rect)
+        y = rect - self.getRectX(rect)
         return y
 
-    def getRectX(self, rect):
-        x = rect - (self.getRectY(rect) * 10)
-        return x
+    def getRectInt(self, rect):
+        return int(rect)
+
 
 # Takes a rect and a player, adds a rect to filledRects[], then adds a symbol
 # corresponding to the player to boardGraphic[]
@@ -39,5 +44,7 @@ class Board:
             filler = ' [X] '
         else:
             filler = ' [O] '
-
-        self.boardGraphic[BOARD_SIZE - self.getRectX(rect)][self.getRectY(rect)] = filler
+        self.boardGraphic[BOARD_SIZE-self.getRectY(self.getRectInt(rect))][int(self.getRectX(self.getRectInt(rect))/10)] = filler
+        self.filledRects.append(rect)
+        player.filledRects.append(rect)
+    
